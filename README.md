@@ -90,7 +90,7 @@ pip install requests beautifulsoup4 pyfiglet colorama
 1. Clone this repository:
 
 ```bash
-git clone https://github.com/yourusername/User-Search.git
+git clone https://github.com/DotX-47/OSINT-V1
 cd User-Search
 ```
 
@@ -111,7 +111,7 @@ pip install -r requirements.txt
 4. Run the tool:
 
 ```bash
-python3 user_search.py
+python3 Users-Dorks.py
 ```
 
 > If your terminal supports ANSI colors, you’ll see the animated rainbow banner. If you run into issues on Windows, use a modern terminal (Windows Terminal / PowerShell) or WSL.

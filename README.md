@@ -6,7 +6,7 @@
 ---
 
 ## 🌈 Quick preview
-
+![Screenshot](Image.png)
 When run, the tool shows an animated rainbow ASCII banner and a simple menu:
 
 ```

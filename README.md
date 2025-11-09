@@ -168,19 +168,6 @@ The author (DotX-47) assumes **no responsibility** for misuse. Use at your own r
 
 ---
 
-## 🗂 Suggested repository layout
-
-```
-User-Search/
-│
-├── user_search.py        # main script (contains animated banner)
-├── requirements.txt      # dependency list (optional, contents shown above)
-├── README.md             # this file
-└── assets/               # optional screenshots for the README
-    ├── demo.png
-    └── example_output.png
-```
-
 ---
 
 ## ✉️ Contact / Author

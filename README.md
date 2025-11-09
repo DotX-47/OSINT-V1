@@ -196,4 +196,3 @@ User-Search/
 
 ---
 
-_End of README — ready to copy into `README.md`._

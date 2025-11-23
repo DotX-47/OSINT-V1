@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+
 # ---------------------------------------------------------
 #  User-Search - Made By DotX-47
 #  Animated rainbow banner + username enumeration (OSINT).
@@ -259,3 +259,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+

@@ -1,8 +1,5 @@
 
-# ---------------------------------------------------------
 #  User-Search - Made By DotX-47
-#  Animated rainbow banner + username enumeration (OSINT).
-# ---------------------------------------------------------
 
 import os
 import sys
@@ -16,9 +13,8 @@ from bs4 import BeautifulSoup
 import pyfiglet
 from colorama import Fore, init
 
-# ---------------------------------------------------------
 #  Basic Configuration
-# ---------------------------------------------------------
+
 init(autoreset=True)
 
 BANNER_TEXT = "User-Search - Made By DotX-47"
@@ -31,7 +27,6 @@ REQUEST_TIMEOUT = 8
 MAX_WORKERS = 30
 RESULTS_DIR = "Doxed"
 
-# Color shortcuts
 COLORS = [
     Fore.RED,
     Fore.YELLOW,
@@ -46,15 +41,11 @@ RESET = Fore.RESET
 
 print_lock = threading.Lock()
 
-# ---------------------------------------------------------
-#  Animated Rainbow Banner
-# ---------------------------------------------------------
 def _clear_terminal():
     """Clear the terminal screen in a cross-platform way."""
     if os.name == "nt":
         os.system("cls")
     else:
-        # Use ANSI clear for speed/compatibility
         sys.stdout.write("\033c")
         sys.stdout.flush()
 
@@ -64,7 +55,6 @@ def _colorize_line_shifted(line: str, shift: int) -> str:
     out = []
     color_count = len(COLORS)
     for i, ch in enumerate(line):
-        # preserve whitespace but still advance the color index for aesthetic continuity
         color = COLORS[(i + shift) % color_count]
         out.append(f"{color}{ch}")
     out.append(RESET)
@@ -79,20 +69,16 @@ def animate_banner(text: str, frames: int = 24, delay: float = 0.06):
     try:
         for frame in range(frames):
             _clear_terminal()
-            shift = frame  # moving color index
+            shift = frame  
             for line in lines:
                 print(_colorize_line_shifted(line, shift))
-            # small subtitle in the center-ish area
             subtitle = "Made By DotX-47"
-            print()  # blank line
-            # color subtitle with a rotated color pattern
+            print()  
             print("".join(COLORS[(i + shift) % len(COLORS)] + ch for i, ch in enumerate(subtitle)) + RESET)
             time.sleep(delay)
     except KeyboardInterrupt:
-        # If the user interrupts, just stop animating and proceed gracefully
         pass
 
-    # Print final, non-animated banner (settled state)
     _clear_terminal()
     final_shift = frames % len(COLORS)
     ascii_art = pyfiglet.figlet_format(text)
@@ -101,16 +87,13 @@ def animate_banner(text: str, frames: int = 24, delay: float = 0.06):
     print()
     subtitle = "Made By DotX-47"
     print("".join(COLORS[(i + final_shift) % len(COLORS)] + ch for i, ch in enumerate(subtitle)) + RESET)
-    print("\n")  # space before menu
+    print("\n")  
 
-
-# Run the animation once at startup
 animate_banner(BANNER_TEXT, frames=30, delay=0.055)
 
 
-# ---------------------------------------------------------
 #  Helper Functions (unchanged core functionality)
-# ---------------------------------------------------------
+
 def make_session() -> requests.Session:
     """Return a configured requests session."""
     s = requests.Session()
@@ -133,7 +116,6 @@ def google_dork_search(query: str) -> List[str]:
     soup = BeautifulSoup(response.text, "html.parser")
     results = []
 
-    # Note: Google's HTML changes often; this is a best-effort selector.
     for div in soup.find_all("div", class_="BVG0Nb"):
         link = div.find("a")
         if link and "href" in link.attrs:
@@ -222,10 +204,8 @@ def username_lookup(target: str):
     else:
         print(f"\n{RED}[!] No profiles found for {target}.{RESET}\n")
 
-
-# ---------------------------------------------------------
 #  Main Menu
-# ---------------------------------------------------------
+
 def main():
     while True:
         print("[ MENU ]")
